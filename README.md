@@ -10,8 +10,10 @@
 - 公式图片支持 **.png** / **.jpg** / **.bmp**，大小为 **4M** 以内均可；
 - 支持**印刷体**及**手写体**，前者识别效果更佳。
 
+软件下载地址：https://gitee.com/qingchen1995/qc-formula/releases
+
 ### 1 软件架构
-- 软件基于 ```Python 3.7``` 开发，界面基于 ```PyQt 5```，项目**完全开源**。
+- 软件基于 ```Python 3.7``` 开发，界面基于 ```PyQt 5```，项目 **完全开源**。
 - 软件在 macOS 10.15.1 、Windows 10 测试通过，Linux 平台用户亦可自行编译。
 
 ### 2 使用教程
@@ -71,11 +73,11 @@ API 的获取方法如下：
 #### 3.2 文件树
 
 - **/Examples** ：存放示例图片。
-- **main_v103.py**：软件主程序。
-  - 此文件调用了 **Init_Window.py** 与 **OCR_iFLY_v103.py** 中定义的类。
-- **Init_Window.py**：PyQt GUI 控件定义及绘制源码，使用 PyUIC 生成。
-- **Init_Window.ui**：Qt 窗口样式文件，可使用 Qt Designer 打开及编辑。
-- **OCR_iFLY_v103.py**：定义公式识别相关后端函数（讯飞接口）。
+- **main_v104.py**：软件主程序。
+  - 此文件调用了 **Init_Window_v104.py** 与 **OCR_iFLY_v104.py** 中定义的类。
+- **Init_Window_v104.py**：PyQt GUI 控件定义及绘制源码，使用 PyUIC 生成。
+- **Init_Window_v104.ui**：Qt 窗口样式文件，可使用 Qt Designer 打开及编辑。
+- **OCR_iFLY_v104.py**：定义公式识别相关后端函数（讯飞接口）。
 - **config.ini**：配置文件，存放公式图片路径及 API 参数。
 - **requirements.txt**：程序的依赖项列表。
 
@@ -93,16 +95,22 @@ API 的获取方法如下：
 
 #### 3.4 调试方法
 
-- 在 PyCharm 等 IDE 中，使用 requirements.txt 安装好相关依赖，随后运行 main_v103.py ，即可运行程序。
+- 在 PyCharm 等 IDE 中，使用 requirements.txt 安装好相关依赖，随后运行 main_v104.py ，即可运行程序。
 - 程序的部分运行状态（如图片加载状态、公式识别结果完整 JSON 文本等）会输出到终端中，便于实时查看和调试。
 
 ### 4 目前已知的问题
 
+- 请勿使用 Windows 记事本直接编辑及保存 config.ini 配置文件！！！
+  - 原因：Windows 记事本默认使用 ANCI 编码方式保存文件，而本程序使用 utf-8 编码格式读取，在**读取中文路径** 的时候会产生冲突。
+  - 报错解决方式：若程序无法打开，并提示：UnicodeDecodeError:'utf-8' code can't ... ，则执行以下步骤：
+    1. 使用记事本打开 config.ini 文件，选择 “文件 - 另存为”；
+    2. 文件名填写 “config.ini”，保存类型填写 “所有文件”，最下方的编码选择 “utf-8”。
+    3. 确认替换，重新打开软件即可。
 - 对于结构比较复杂的公式，识别准确率不高。后续将尝试引入其他识别 API 以提高准确率。 
 
 ### 5 参与贡献
 
-这个软件的界面和功能还非常原始，非常欢迎大家对它进行后续的开发。
+这个软件的界面和功能还非常原始，随时欢迎大家对它进行后续的开发。
 1.  Fork 本仓库
 2.  新建 Feat_xxx 分支
 3.  提交代码
@@ -116,5 +124,5 @@ API 的获取方法如下：
 
 本程序 GitHub 仓库地址：https://github.com/QingchenWait/QC-Formula
 
-本程序码云仓库地址：https://gitee.com/qingchen1995/qc-formula
+本程序码云地址：https://gitee.com/qingchen1995/qc-formula
 
