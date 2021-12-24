@@ -1,4 +1,4 @@
-# QC-Formula / 青尘公式 OCR
+# QC-Formula | 青尘公式 OCR
 
 ### 介绍
 
