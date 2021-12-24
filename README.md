@@ -10,7 +10,7 @@
 - 公式图片支持 **.png** / **.jpg** / **.bmp**，大小为 **4M** 以内均可；
 - 支持**印刷体**及**手写体**，前者识别效果更佳。
 
-软件下载地址：https://gitee.com/qingchen1995/qc-formula/releases
+软件下载地址：https://github.com/QingchenWait/QC-Formula/releases
 
 ### 1 软件架构
 - 软件基于 ```Python 3.7``` 开发，界面基于 ```PyQt 5```，项目 **完全开源**。
