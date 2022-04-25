@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Init_Window.ui'
+# Form implementation generated from reading ui file 'E:\CLONE\QC-Formula/Init_Window_v104.ui'
 #
 # Created by: PyQt5 UI code generator 5.9.2
 #
@@ -50,6 +50,9 @@ class Ui_MainWindow(object):
         self.DOCPage_ImageLabel.setScaledContents(False)
         self.DOCPage_ImageLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.DOCPage_ImageLabel.setObjectName("DOCPage_ImageLabel")
+        self.DOCPage_LoadButton_clipboard = QtWidgets.QPushButton(self.tab_2)
+        self.DOCPage_LoadButton_clipboard.setGeometry(QtCore.QRect(470, 90, 100, 32))
+        self.DOCPage_LoadButton_clipboard.setObjectName("DOCPage_LoadButton_clipboard")
         self.TopTabWidget.addTab(self.tab_2, "")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -158,7 +161,7 @@ class Ui_MainWindow(object):
         self.Copy_Status_Label.setObjectName("Copy_Status_Label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 650, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 650, 23))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -178,7 +181,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menu.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.TopTabWidget.setCurrentIndex(2)
+        self.TopTabWidget.setCurrentIndex(0)
         self.DOCPage_LoadButton.clicked.connect(MainWindow.img_Load_From_Doc)
         self.DOCPage_LoadButton.clicked.connect(MainWindow.img_Display_In_Doc_Label)
         self.Setting_ConfirmButton.clicked.connect(MainWindow.Setting_API_Values)
@@ -199,6 +202,7 @@ class Ui_MainWindow(object):
         self.DOCPage_InfoButton.setText(_translate("MainWindow", "图片信息"))
         self.DOCPage_ConfirmButton.setText(_translate("MainWindow", "识别公式"))
         self.DOCPage_ImageLabel.setText(_translate("MainWindow", "公式预览"))
+        self.DOCPage_LoadButton_clipboard.setText(_translate("MainWindow", "读取粘贴板"))
         self.TopTabWidget.setTabText(self.TopTabWidget.indexOf(self.tab_2), _translate("MainWindow", "从文件导入"))
         self.URLPage_label_1.setText(_translate("MainWindow", "图片网址："))
         self.URLPage_ConfirmButton.setText(_translate("MainWindow", "识别公式"))
