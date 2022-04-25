@@ -18,10 +18,11 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 # 从根目录下文件中调用的类
 from Init_Window_v104 import Ui_MainWindow ### PyQt 界面样式
 from OCR_iFLY_v104 import get_result ### 讯飞接口
-
+import numpy as np
 ### 注意：使用 PyInstaller 进行打包时，配置文件路径的定义，与调试时不同。
 ### 使用 Python IDE 调试时，需要注释掉第二行，使第一行命令生效；而使用 PyInstaller 进行打包时，需要注释掉第一行，使第二行命令生效。
 BASE_DIR = os.path.dirname(os.path.abspath(__file__)) ### 用于读写配置文件的全局路径
+print(BASE_DIR)
 #BASE_DIR = os.path.dirname(sys.executable) ### 用于读写配置文件的全局路径
 
 class MainWindow(QMainWindow):
@@ -38,6 +39,7 @@ class MainWindow(QMainWindow):
         self.ui.Input_APISecret.setText(self.conf.get('API_iFLY', 'APISecret'))
         self.ui.Input_APIKey.setText(self.conf.get('API_iFLY', 'APIKey'))
         self.ui.Copy_Status_Label.setText("")
+        self.ui.DOCPage_LoadButton_clipboard.clicked.connect(self.img_Load_From_Clipboard)
 
 
     # 定义槽函数：从本地请求图片地址
@@ -64,7 +66,31 @@ class MainWindow(QMainWindow):
                 self.conf.write(f)
             print("IMG LOAD SUCCESS")
 
-    # 定义槽函数：从互联网请求图片地址
+    def img_Load_From_Clipboard(self):
+        clipboard = QApplication.clipboard()
+        image = clipboard.image()
+        self.img_Display_In_Doc_Label_Clipboard(image)
+
+    def img_Display_In_Doc_Label_Clipboard(self,image):
+        # 在 QLabel 中绘制图片
+        image = QPixmap.fromImage(image)
+        self.ui.DOCPage_ImageLabel.setPixmap(image)
+        self.ui.DOCPage_ImageLabel.setScaledContents(True)  # 自适应QLabel大小
+        # 保存照片
+        image_path = os.path.join(BASE_DIR,'Examples','temp.png')
+        image.save(image_path)
+        self.conf = configparser.ConfigParser()  # 加载现有配置文件
+        self.conf.read(os.path.join(BASE_DIR, 'config.ini'), encoding="utf-8-sig")  # 从全局路径读取配置文件
+        try:
+            self.conf.set('img_Location', 'DOC', image_path)
+            ### 确定写入配置文件
+            with open("config.ini", "w+") as f:
+                self.conf.write(f)
+            print("IMG LOAD SUCCESS")
+        except:
+            pass
+
+        # 定义槽函数：从互联网请求图片地址
     def img_Load_From_Internet(self):
         return 0 ### 等待后续开发...
 
